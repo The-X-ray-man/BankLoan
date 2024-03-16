@@ -8,20 +8,22 @@ using System.Threading.Tasks;
 
 namespace BankLoan.Models
 {
-    public abstract class Bank
+    public abstract class Bank : IBank
     {
+        private List<ILoan> loans;
+        private List<IClient> clients;
+        private string name;
+
         public string Name 
         { 
-            get => Name;
+            get => name;
             private set 
             {
-                if (string.IsNullOrWhiteSpace(Name)) throw new ArgumentException(ExceptionMessages.BankNameNullOrWhiteSpace);
-                Name = value;
+                if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException(ExceptionMessages.BankNameNullOrWhiteSpace);
+                name = value;
             }
         }
         public int Capacity { get; private set; }
-        private List<ILoan> loans;
-        private List<IClient> clients;
 
         protected Bank(string name, int capacity)
         {
@@ -45,7 +47,7 @@ namespace BankLoan.Models
         }
         public void AddClient(IClient client)
         {
-            if (clients.Count == Capacity) throw new ArgumentException(ExceptionMessages.NotEnoughCapacity);
+            if (clients.Count >= Capacity) throw new ArgumentException(ExceptionMessages.NotEnoughCapacity);
             clients.Add(client);
         }
         public void RemoveClient(IClient client)

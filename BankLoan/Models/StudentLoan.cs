@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace BankLoan.Models
 {
-    public class StudentLoan : Loan, ILoan
+    public class StudentLoan : Loan
     {
-        private const double amount = 10000;
-        private const int interestRate = 1;
-
-        public StudentLoan() : base(interestRate, amount)
+        public StudentLoan() : base(1, 10000)
         {
         }
     }

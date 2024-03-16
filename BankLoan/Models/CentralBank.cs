@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankLoan.Models
 {
-    internal class CentralBank : Bank, IBank
+    public class CentralBank : Bank
     {
         public CentralBank(string name) : base(name, 50)
         {

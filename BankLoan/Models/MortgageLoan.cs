@@ -9,10 +9,7 @@ namespace BankLoan.Models
 {
     public class MortgageLoan : Loan, ILoan
     {
-        private const double amount = 50000;
-        private const int interestRate = 3;
-
-        public MortgageLoan() : base(interestRate, amount)
+        public MortgageLoan() : base(3, 50000)
         {
         }
     }
